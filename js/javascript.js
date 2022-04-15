@@ -1,5 +1,4 @@
-//const name = prompt("Digite o seu nome: ")
-//const nome = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants")
+
 const pegarMensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
 pegarMensagens.then(mensagensProcessadas);
 
@@ -29,7 +28,7 @@ function mensagensProcessadas(resposta) {
             selecionado.innerHTML += `
             <div class="mensagensStatus">
                 <div class="time">(${lista[i].time})</div>
-                <p><strong>${lista[i].from}</strong>././.${lista[i].text}</p>
+                <p><strong>${lista[i].from}</strong> ${lista[i].text}</p>
             </div>
             `
 
@@ -46,6 +45,7 @@ function mensagensProcessadas(resposta) {
     document.querySelector(".conteudo ").scrollIntoView(false);
 }
 setInterval(mensagensProcessadas, 30000);
+
 
 //REQUISITO: ENTRANDO NA SALA
 const nome = prompt("Digite o seu nome: ")
@@ -75,41 +75,14 @@ function permanecerOnline() {
 }
 
 
-
-
-
-
-
-
-
-//ADICIONAR MENSAGENS
-const enviarMensagens = axios.post()
-
-
+//REQUISITO: ENVIO DE MENSAGEM
 function enviarMensagen() {
     const mensagem = {
-        from: "chunchumaru",
+        from: `${nome}`,
         to: "Todos",
         text: document.querySelector("input").value,
         type: "message"
     };
+    const enviarMensagens = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagem)
 }
 
-/*function recarregar() {
-    Location.reload()
-}
-
-setInterval(recarregar, 3000)*/
-
-
-
-
-
-
-
-/* enviar dados(post)
-const requisição = axios/uol.get(`https:`, dados);
-chamar função/tratar dados
-requisição.then(tratarSucesso);
-requisicao.catch(tratarErro);
-*/

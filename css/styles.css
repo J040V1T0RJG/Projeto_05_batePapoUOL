@@ -99,8 +99,8 @@ body {
 .base :first-child {
     margin-left: 22px;
 }
-.base :last-child {
+.base :last-child{
     font-size: 26px;
     margin-right: 22px;
-
+    cursor: pointer;
 }
