@@ -1,23 +1,26 @@
 //const name = prompt("Digite o seu nome: ")
-const nome = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants")
-const mensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
-mensagens.then(mensagensProcessadas);
+//const nome = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants")
+const pegarMensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
+pegarMensagens.then(mensagensProcessadas);
 
 let lista;
 
 
 //MENSAGENS DO SERVIDOR
 function mensagensProcessadas(resposta) {
+    const pegarMensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
+    pegarMensagens.then(mensagensProcessadas);
 
     lista = resposta.data
     console.log(resposta)
 
     let selecionado = document.querySelector(".conteudo")
-    for(let i = 95; i < 100; i++){
+    selecionado.innerHTML = ""
+    for(let i = 5; i < 100; i++){
         if(lista[i].type == "message") {
             selecionado.innerHTML += `
             <div class="mensagensNormais">
-                <div class= "time">(${lista[i].time}) ././.</div>
+                <div class= "time">(${lista[i].time})</div>
                 <p> <strong>${lista[i].from}</strong> para <strong>${lista[i].to}</strong>: ${lista[i].text}</p>
             </div>
             `
@@ -26,7 +29,7 @@ function mensagensProcessadas(resposta) {
             selecionado.innerHTML += `
             <div class="mensagensStatus">
                 <div class="time">(${lista[i].time})</div>
-                <p>${lista[i].from}././.${lista[i].text}</p>
+                <p><strong>${lista[i].from}</strong>././.${lista[i].text}</p>
             </div>
             `
 
@@ -35,19 +38,36 @@ function mensagensProcessadas(resposta) {
             selecionado.innerHTML += `
             <div class="mensagensReservadas">
                 <div class="time">(${lista[i].time})</div>
-                <div>${lista[i].from} reservadamente para ${lista[i].to}: ${lista[i].text}</div>
+                <div><strong>${lista[i].from}</strong> reservadamente para <strong>${lista[i].to}</strong>: ${lista[i].text}</div>
             </div>
             `
         }
     }
+    document.querySelector(".conteudo ").scrollIntoView(false);
+
+    
 
 }
+setInterval(mensagensProcessadas, 30000);
+
+
+
+
+
+
+
 
 
 //ADICIONAR MENSAGENS
+const enviarMensagens = axios.post()
+
+
 function enviarMensagen() {
     const mensagem = {
-        text: document.querySelector("input").value
+        from: "chunchumaru",
+        to: "Todos",
+        text: document.querySelector("input").value,
+        type: "message"
     };
 }
 
