@@ -33,10 +33,14 @@ body {
     margin-top: 80px;
     padding-bottom: 80px;
     padding-top: 10px;
+    
 }
+
+
+
 .mensagensNormais {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     background-color: #FFFFFF;
     border-radius: 2px;
     display: flex;
@@ -44,11 +48,12 @@ body {
     
     margin-top: 10px;
     margin-bottom: 10px;
+    word-break: break-word;
 }
 
 .mensagensReservadas {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     background-color: #FFDEDE;
     border-radius: 2px;
     display: flex;
@@ -56,10 +61,11 @@ body {
 
     margin-top: 10px;
     margin-bottom: 10px;
+    word-break: break-word;
 }
 .mensagensStatus {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     background-color: #DCDCDC;
     border-radius: 2px;
     display: flex;
@@ -67,6 +73,7 @@ body {
 
     margin-top: 10px;
     margin-bottom: 10px;
+    word-break: break-word;
 }
 .time {
     color: #AAAAAA;

@@ -6,7 +6,7 @@ pegarMensagens.then(mensagensProcessadas);
 let lista;
 
 
-//MENSAGENS DO SERVIDOR
+//REQUISITO: CHAT
 function mensagensProcessadas(resposta) {
     const pegarMensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
     pegarMensagens.then(mensagensProcessadas);
@@ -16,7 +16,7 @@ function mensagensProcessadas(resposta) {
 
     let selecionado = document.querySelector(".conteudo")
     selecionado.innerHTML = ""
-    for(let i = 5; i < 100; i++){
+    for(let i = 80; i < 100; i++){
         if(lista[i].type == "message") {
             selecionado.innerHTML += `
             <div class="mensagensNormais">
@@ -44,11 +44,35 @@ function mensagensProcessadas(resposta) {
         }
     }
     document.querySelector(".conteudo ").scrollIntoView(false);
-
-    
-
 }
 setInterval(mensagensProcessadas, 30000);
+
+//REQUISITO: ENTRANDO NA SALA
+const nome = prompt("Digite o seu nome: ")
+let nomeUsuario = {
+    name: `${nome}`
+}
+
+const enviarNome = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeUsuario);
+
+enviarNome.then(tratarSucesso);
+enviarNome.catch(tratarError);
+
+function tratarSucesso(resposta) {
+    alert(`${nome} cadastrado com sucesso`)
+}
+function tratarError(erro) {
+    const nome = prompt(`Nome ja existente\nDigite outro nome novamente:`)
+    let nomeUsuario = {
+        name: `${nome}`
+    }
+}
+
+setInterval(permanecerOnline, 5000);
+function permanecerOnline() {
+    const enviarStatus = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeUsuario)
+
+}
 
 
 
