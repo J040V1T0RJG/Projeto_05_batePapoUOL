@@ -17,6 +17,7 @@ body {
     top: 0px;
     
     
+    
 }
 .topo :first-child {
     width: 75px;
@@ -32,8 +33,7 @@ body {
 .conteudo {
     margin-top: 80px;
     padding-bottom: 80px;
-    padding-top: 10px;
-    
+    padding-top: 10px; 
 }
 
 
@@ -49,6 +49,8 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     word-break: break-word;
+    
+    
 }
 
 .mensagensReservadas {
@@ -62,6 +64,7 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     word-break: break-word;
+    
 }
 .mensagensStatus {
     width: 100%;
@@ -79,6 +82,7 @@ body {
     color: #AAAAAA;
     margin-left: 10px;
     margin-right: 10px;
+    min-width: 70px;
 }
 
 
@@ -95,12 +99,56 @@ body {
     position: fixed;
     bottom: 0px;
 
+    
+
 }
 .base :first-child {
     margin-left: 22px;
+    width: 245px;
+    height: 30px;
+    font-style: italic;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: black;
 }
+
 .base :last-child{
     font-size: 26px;
     margin-right: 22px;
     cursor: pointer;
 }
+
+.telaDeEntrada {
+    width: 100%;
+    height: 973px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aqua;
+    position: absolute;
+}
+.telaDeEntrada :first-child {
+    width: 130px;
+    height: 92px;
+    margin-top: 72px;
+}
+.telaDeEntrada :nth-child(2) {
+    width: 262px;
+    height: 54px;
+    margin-top: 92px;
+}
+.telaDeEntrada :last-child {
+    width: 110px;
+    height: 45px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+.displaynone {
+    display: none;
+}
+
+
+
+
+
