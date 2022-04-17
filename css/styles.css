@@ -14,10 +14,7 @@ body {
     border-radius: 2px;
     box-shadow: 0px 1px 10px ;
     position: fixed;
-    top: 0px;
-    
-    
-    
+    top: 0px;  
 }
 .topo :first-child {
     width: 75px;
@@ -26,18 +23,15 @@ body {
 }
 .topo :last-child {
     font-size: 42px;
-    margin-right: 22px;
-    
+    margin-right: 22px; 
 }
 
+/**/
 .conteudo {
     margin-top: 80px;
     padding-bottom: 80px;
     padding-top: 10px; 
 }
-
-
-
 .mensagensNormais {
     width: 100%;
     min-height: 40px;
@@ -48,11 +42,8 @@ body {
     
     margin-top: 10px;
     margin-bottom: 10px;
-    word-break: break-word;
-    
-    
+    word-break: break-word;  
 }
-
 .mensagensReservadas {
     width: 100%;
     min-height: 40px;
@@ -63,8 +54,7 @@ body {
 
     margin-top: 10px;
     margin-bottom: 10px;
-    word-break: break-word;
-    
+    word-break: break-word; 
 }
 .mensagensStatus {
     width: 100%;
@@ -85,8 +75,7 @@ body {
     min-width: 70px;
 }
 
-
-
+/**/
 .base {
     width: 100%;
     height: 80px;
@@ -98,9 +87,6 @@ body {
     box-shadow: 0px 1px 10px;
     position: fixed;
     bottom: 0px;
-
-    
-
 }
 .base :first-child {
     margin-left: 22px;
@@ -112,38 +98,62 @@ body {
     font-size: 20px;
     color: black;
 }
-
 .base :last-child{
     font-size: 26px;
     margin-right: 22px;
     cursor: pointer;
 }
+.base ::placeholder {
+    color: black;
+}
 
+/**/
 .telaDeEntrada {
     width: 100%;
-    height: 973px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aqua;
-    position: absolute;
+    background-color: #FFFFFF;
 }
 .telaDeEntrada :first-child {
     width: 130px;
     height: 92px;
     margin-top: 72px;
 }
-.telaDeEntrada :nth-child(2) {
+.telaDeEntrada input {
     width: 262px;
     height: 54px;
     margin-top: 92px;
+    border-radius: 4px;
+    border: 1px solid #D7D7D7;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: center;  
 }
-.telaDeEntrada :last-child {
+.telaDeEntrada button {
     width: 110px;
     height: 45px;
     margin-top: 15px;
     border-radius: 10px;
+    border: none;
+    background: #E7E7E7;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #696969;
 }
+.telaDeEntrada .loading {
+    width: 130px;
+    margin-top: 15px;
+}
+
 .displaynone {
     display: none;
 }

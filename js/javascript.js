@@ -1,56 +1,62 @@
-
-
-
+let nome;
+let nomeUsuario;
 let lista;
+
 mensagensProcessadas()
 
+//Bônus: Tela de Entrada
+function botaoEntrar() {
 
-//REQUISITO: ENTRANDO NA SALA
+    document.querySelector(".telaDeEntrada").querySelector("input").classList.add("displaynone");
+    document.querySelector(".telaDeEntrada").querySelector("button").classList.add("displaynone");
+    document.querySelector(".telaDeEntrada").querySelector(".loading").classList.remove("displaynone");
+    document.querySelector(".telaDeEntrada").querySelector("p").classList.remove("displaynone");
 
-let nome = prompt("Digite o seu nome: ")
-let nomeUsuario = {
-    name: `${nome}`
-}
+    setTimeout(entrandoCarregando, 2000);
+    function entrandoCarregando() {
+        nome = document.querySelector(".telaDeEntrada").querySelector("input").value
+        nomeUsuario = {
+            name: `${nome}`
+        }
+    
+        const enviarNome = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeUsuario);
+    
+        enviarNome.then(tratarSucesso);
+        enviarNome.catch(tratarError);
+    
+        function tratarSucesso(resposta) {
+            document.querySelector(".topo").classList.remove("displaynone");
+            document.querySelector(".conteudo").classList.remove("displaynone");
+            document.querySelector(".base").classList.remove("displaynone");
+            document.querySelector(".telaDeEntrada").classList.add("displaynone");
+            alert(`${nome} cadastrado com sucesso`);
+        }
+        function tratarError(erro) {
+            nomeErrado()
+        }
+        function nomeErrado() {
+            document.querySelector(".telaDeEntrada").querySelector("input").classList.remove("displaynone");
+            document.querySelector(".telaDeEntrada").querySelector("button").classList.remove("displaynone");
+            document.querySelector(".telaDeEntrada").querySelector(".loading").classList.add("displaynone");
+            document.querySelector(".telaDeEntrada").querySelector("p").classList.add("displaynone");
 
-const enviarNome = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeUsuario);
-
-enviarNome.then(tratarSucesso);
-enviarNome.catch(tratarError);
-
-function tratarSucesso(resposta) {
-    alert(`${nome} cadastrado com sucesso`)
-}
-function tratarError(erro) {
-    nomeErrado()
-}
-
-
-function nomeErrado() {
-    nome = prompt(`Nome ja existente\nDigite outro nome novamente:`)
-    nomeUsuario = {
-        name: `${nome}`
+            alert("Nome ja existente\nDigite outro nome novamente:")
+            document.querySelector(".telaDeEntrada").querySelector("input").value = ""
+        }
     }
-
-    const enviarNome = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeUsuario);
-
-    enviarNome.then(tratarSucesso);
-    enviarNome.catch(tratarError);
 }
-
 setInterval(permanecerOnline, 5000);
 function permanecerOnline() {
     const enviarStatus = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeUsuario)
 }
 
 
-
 //REQUISITO: CHAT
 function mensagensProcessadas() {
     const pegarMensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
     pegarMensagens.then(renderizarMensagens);
-
- 
 }
+
 setInterval(mensagensProcessadas, 3000);
 
 function renderizarMensagens(resposta) {
@@ -88,7 +94,7 @@ function renderizarMensagens(resposta) {
             }  
         }
     }
-    document.querySelector(".conteudo ").scrollIntoView(false);
+    document.querySelector(".conteudo").scrollIntoView(false); 
 }
 
 
@@ -97,7 +103,7 @@ function enviarMensagen() {
     const mensagem = {
         from: `${nome}`,
         to: "Todos",
-        text: document.querySelector("input").value,
+        text: document.querySelector(".base").querySelector("input").value,
         type: "message"
     };
     const enviarMensagens = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagem)
@@ -113,44 +119,5 @@ function enviarMensagen() {
         alert("Erro para mandar mensagem")
         window.location.reload()
     }
-
-    document.querySelector("input").value = ""
-    
-
-    
-}
-
-
-//Bônus: Tela de Entrada
-function BotaoEntrar() {
-    
-    const entrar = {
-        name: document.querySelector(".telaDeEntrada").querySelector("input").value,
-    }
-    let nome = entrar.name
-
-
-const enviarNome = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", entrar);
-
-enviarNome.then(tratarSucesso);
-enviarNome.catch(tratarError);
-
-function tratarSucesso(resposta) {
-    document.querySelector(".telaDeEntrada").querySelector("input").classList.add("displaynone");
-    alert(`${nome} cadastrado com sucesso`)
-    console.log(tratarSucesso)
-}
-function tratarError(erro) {
-    const nome = prompt(`Nome ja existente\nDigite outro nome novamente:`)
-    let nomeUsuario = {
-        name: `${nome}`
-    }
-}
-/*
-setInterval(permanecerOnline, 5000);
-function permanecerOnline() {
-    const enviarStatus = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeUsuario)
-
-}
-*/
+    document.querySelector(".base").querySelector("input").value = "" 
 }
